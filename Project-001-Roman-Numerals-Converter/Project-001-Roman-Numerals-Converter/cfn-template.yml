@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  
+Parameters:
+
+  KeyPair:
+    Description: 
+    Type: AWS::EC2::KeyPair::KeyName 
+  
+Resources:
+  WebServerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH and HTTP # Required
+      GroupName: "String"
+      SecurityGroupIngress:
+      - IpProtocol: tcp # https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html
+        FromPort: 22
+        toPort: 22
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp # https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+  
+  WebServerHost:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0b5eea76982371e91
+      InstanceType: t2.micro
+      KeyName: !Ref KeyPair
+      SecurityGroupIds:
+      - !Ref WebServerSecurityGroup
+      Tags:
+      - Key: Name
+        Value: WebServer
+      UserData: "String"
+  
+# Outputs:
