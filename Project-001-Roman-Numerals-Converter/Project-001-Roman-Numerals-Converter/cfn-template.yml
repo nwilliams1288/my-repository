@@ -11,7 +11,7 @@ Resources:
   WebServerSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Allow SSH and HTTP # Required
+      GroupDescription: Enable Http SSH and HTTP # Required
       GroupName: "String"
       SecurityGroupIngress:
       - IpProtocol: tcp # https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html
