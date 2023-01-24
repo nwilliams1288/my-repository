@@ -16,14 +16,14 @@ def main_post():
     if request.method == 'POST':
         alpha = str(request.form['number'])        
         if not alpha.isdecimal():
-            return render_template('index.html', developer_name='Altaz', not_valid=True)
+            return render_template('index.html', developer_name='Nick', not_valid=True)
         else:
             number = int(alpha)
             if not 0 < number < 4000:
                 return render_template('index.html', developer_name='Nick', not_valid=True)
             else:
                 roman_number = convert(number)
-                return render_template('result.html', number_decimal=number, number_roman=roman_number, developer_name='Altaz')
+                return render_template('result.html', number_decimal=number, number_roman=roman_number, developer_name='Nick')
     else:
         return render_template('index.html', developer_name='Nick', not_valid=False)
 
